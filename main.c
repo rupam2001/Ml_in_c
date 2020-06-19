@@ -11,6 +11,7 @@ int main(){
     float learning_rate = 0.1;  //for backpropagation
     int num_epochs = 1000;
     float test[] = {1.0, 1.0, 0.0}; //testing samples
+    int show_cost = 1;
 
     CSV csv;  
     read_csv(&csv, filePath);  //reading the csv file
@@ -18,7 +19,7 @@ int main(){
     makeTableFloat(&csv, batch_size, label_column);      // making the table of features and labels  
     Model model;   
     initialize_weights(&model, features_len); 
-    compile(&model, num_features, features_len, "binary_crossentropy", 1 );
+    compile(&model, num_features, features_len, "binary_crossentropy", show_cost );
     classification_train(&model, &csv.floatTable, csv.floatLabels, learning_rate, num_epochs);
     float pred = predict(&model, test);
     pritnf("prediction is: %f\n", pred);
