@@ -92,7 +92,10 @@ void makeTableFloat( CSV *csv, int batch_size, int label_column){
             int length = len(row_array);
             float f[length];
             for(int j = 0; j < length; j++){
-                if(j == label_column) continue;
+                 if(j == label_column){ 
+                    csv->floatLabels[i] = strtof(row_array[j], NULL);   //the labels column
+                    continue;
+                }
                 f[j] = strtof(row_array[j], NULL); 
                 // printf("%f\n",f);
             }
