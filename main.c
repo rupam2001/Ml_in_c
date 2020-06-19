@@ -20,7 +20,7 @@ int main(){
     Model model;   
     initialize_weights(&model, features_len); 
     compile(&model, num_features, features_len, "binary_crossentropy", show_cost );
-    classification_train(&model, &csv.floatTable, csv.floatLabels, learning_rate, num_epochs);
+    classification_train(&model, csv.floatTable, csv.floatLabels, learning_rate, num_epochs);
     float pred = predict(&model, test);
     pritnf("prediction is: %f\n", pred);
 }
